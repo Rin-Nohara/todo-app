@@ -1,16 +1,19 @@
 import React, { useMemo } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
+
+import ComponentWrap from './ComponentWrap'
 
 interface IProps {
-  text: string;
   color?: string;
   pressHandle?: () => any;
+  navigation?: any;
 }
 
 const Button: React.FC<IProps> = ({
-  text,
   color = "#fff",
   pressHandle,
+  navigation
 }) => {
   const styles = useMemo(() => {
     return StyleSheet.create({
@@ -19,13 +22,19 @@ const Button: React.FC<IProps> = ({
   }, []);
 
   function handle() {
-    pressHandle && pressHandle();
+    if(navigation) {
+      navigation.goBack()
+    } else {
+      pressHandle && pressHandle();
+    }
   }
 
   return (
-    <View onTouchStart={handle}>
-      <Text>{text}</Text>
-    </View>
+    <ComponentWrap>
+      <View onTouchStart={handle}>
+        <AntDesign name="arrowleft" size={24} color="black" />
+      </View>
+    </ComponentWrap>
   );
 };
 

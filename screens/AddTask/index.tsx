@@ -1,9 +1,13 @@
-import { Text } from 'react-native'
+import { View } from 'react-native'
 
-const AddTask = () => {
-  return <Text>
-    hello
-  </Text>;
+import GoBack from '../../components/GoBack';
+
+const AddTask: React.FC<{navigation: any}> = ({navigation}) => {
+  return (
+    <>
+      <GoBack navigation={navigation} />
+    </>
+  );
 }
 
 export default AddTask;

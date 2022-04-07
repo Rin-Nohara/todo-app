@@ -1,9 +1,13 @@
 import { Text } from 'react-native'
 
-const ViewAll = () => {
-  return <Text>
-    view all
-  </Text>;
+import GoBack from '../../components/GoBack'
+
+const ViewAll: React.FC<{navigation: any}> = ({navigation}) => {
+  return (
+    <>
+      <GoBack navigation={navigation} />
+    </>
+  );
 }
 
 export default ViewAll;
