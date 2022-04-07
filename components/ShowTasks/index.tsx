@@ -1,15 +1,15 @@
 import * as React from 'react';
 import Button from '../Button';
 
-const ShowTasks = () => {
+const ShowTasks: React.FC<{navigation: any}> = ({navigation}) => {
 
     function showAllTasks () {
-        console.log('showAllTasks');
+        navigation && navigation.push('ViewAll')
     }
 
     return (
         <Button
-            text='view All Tasks'
+            text='View All'
             pressHandle={showAllTasks}
             bgColor="#fff"
             textColor='#003366'

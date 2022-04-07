@@ -1,14 +1,10 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, View, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
-import Welcome from './components/Welcome'
-import AddTask from './components/AddTask'
-import ShowTasks from './components/ShowTasks'
+import Navigation from './navigation';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 
-import styles from './styles'
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -19,20 +15,7 @@ export default function App() {
   } else {
     return (
         <>
-          <Image
-            style={styles.imgStyle}
-            source={require('./assets/images/default_bgimg.jpeg')}
-          />
-          <SafeAreaView>
-            <View style={styles.box}>
-              <Welcome />
-              <View style={styles.btns}>
-                <AddTask />
-                <View style={styles.blank}></View>
-                <ShowTasks />
-              </View>
-            </View>
-          </SafeAreaView>
+          <Navigation />
           <StatusBar backgroundColor="transparent" />
         </>
     );

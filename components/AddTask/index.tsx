@@ -1,15 +1,16 @@
 import * as React from 'react';
+
 import Button from '../Button';
 
-const AddTask = () => {
+const AddTask: React.FC<{navigation: any}> = ({navigation}) => {
 
     function addTask () {
-        console.log('add task');
+        navigation && navigation.push('AddTask')
     }
 
     return (
         <Button
-            text='add Task'
+            text='Add Task'
             pressHandle={addTask}
         />
     )
