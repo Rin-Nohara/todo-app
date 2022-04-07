@@ -9,6 +9,7 @@ const ShowTasks: React.FC<{navigation: any}> = ({navigation}) => {
 
     return (
         <Button
+            widthFill
             text='View All'
             pressHandle={showAllTasks}
             bgColor="#fff"

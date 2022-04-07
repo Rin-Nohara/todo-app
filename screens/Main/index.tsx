@@ -1,11 +1,17 @@
+// package
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, ImageBackground } from "react-native";
 
+// global component
 import ComponentWrap from "../../components/ComponentWrap";
+import ScreenPadding from "../../components/ScreenPadding";
+
+// screen component
 import Welcome from "../../components/Welcome";
 import AddTask from "../../components/AddTask";
 import ShowTasks from "../../components/ShowTasks";
 
+// style
 import styles from "./styles";
 
 function Main(props: { navigation: any }) {
@@ -21,14 +27,14 @@ function Main(props: { navigation: any }) {
       }
     >
       <SafeAreaView>
-        <View style={styles.box}>
+        <ScreenPadding>
           <Welcome />
           <View style={styles.btns}>
             <AddTask navigation={navigation} />
             <View style={styles.blank}></View>
             <ShowTasks navigation={navigation} />
           </View>
-        </View>
+        </ScreenPadding>
       </SafeAreaView>
     </ComponentWrap>
   );

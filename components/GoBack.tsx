@@ -10,7 +10,7 @@ interface IProps {
   navigation?: any;
 }
 
-const Button: React.FC<IProps> = ({
+const GoBack: React.FC<IProps> = ({
   color = "#fff",
   pressHandle,
   navigation
@@ -30,12 +30,10 @@ const Button: React.FC<IProps> = ({
   }
 
   return (
-    <ComponentWrap>
-      <View onTouchStart={handle}>
-        <AntDesign name="arrowleft" size={24} color="black" />
-      </View>
-    </ComponentWrap>
+    <View onTouchStart={handle}>
+      <AntDesign name="arrowleft" size={24} color="black" />
+    </View>
   );
 };
 
-export default Button;
+export default GoBack;

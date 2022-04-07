@@ -1,22 +1,23 @@
 import React, { useMemo } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+
+const {width: dWidth} = Dimensions.get('window');
 
 interface IProps {
     text: string,
     bgColor?: string,
     textColor?: string,
     disable?: boolean,
-    // 屏幕阅读器文本
-    accessibilityLabel?: '',
     pressHandle?: () => any,
-    width?: number,
-    height?: number,
+    width?: number | string,
+    height?: number | string,
+    widthFill?: boolean,
 }
 
 /**
  * Button 在 ios 和 android 表现不一致，使用 View 模拟，统一为 ios 参数
  */
-const Button: React.FC<IProps> = ({text, textColor = '#fff', bgColor = '#003366', disable, accessibilityLabel, pressHandle, width, height}) => {
+const Button: React.FC<IProps> = ({text, textColor = '#fff', bgColor = '#003366', disable, widthFill, pressHandle, width, height}) => {
 
     const styles = useMemo(() => {
         return StyleSheet.create({
@@ -27,7 +28,7 @@ const Button: React.FC<IProps> = ({text, textColor = '#fff', bgColor = '#003366'
                 paddingBottom: 20,
                 paddingLeft: 20,
                 paddingRight: 20,
-                width: width || 200,
+                width: widthFill ? (dWidth - 28) : (width || 200),
                 height: height || 60,
                 display: 'flex',
                 flexDirection: 'row',

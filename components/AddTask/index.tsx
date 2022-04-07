@@ -10,6 +10,7 @@ const AddTask: React.FC<{navigation: any}> = ({navigation}) => {
 
     return (
         <Button
+            widthFill
             text='Add Task'
             pressHandle={addTask}
         />

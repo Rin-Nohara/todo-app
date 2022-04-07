@@ -20,7 +20,7 @@ export default StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     blank: {
         height: 20,
