@@ -10,4 +10,6 @@ export type RootStackParamList = {
   Main: undefined;
   AddTask: undefined;
   ViewAll: undefined;
+  Login: undefined;
+  Register: undefined;
 };

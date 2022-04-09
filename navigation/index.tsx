@@ -13,6 +13,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import Main from '../screens/Main'
 import AddTask from '../screens/AddTask'
 import ViewAll from '../screens/ViewAll';
+import Login from '../screens/Login';
 
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -36,6 +37,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} options={{ headerShown:false }} />
       <Stack.Screen name="Main" component={Main} options={{ headerShown:false }} />
       <Stack.Screen name="AddTask" component={AddTask} options={{ headerShown:false }} />
       <Stack.Screen name="ViewAll" component={ViewAll} options={{ headerShown:false }} />
