@@ -6,8 +6,9 @@ const Input: React.FC<{
   valueChange: (value: any) => any,
   multiline?: boolean,
   numberOfLines?: number,
-  placeholder?: string
-}> = ({valueChange, multiline = false, numberOfLines = 2, placeholder = 'Task'}) => {
+  placeholder?: string,
+  required?: boolean
+}> = ({valueChange, multiline = false, numberOfLines = 2, placeholder = 'Task', required = false}) => {
 
   const [ value, setValue ] = useState<string>('');
 
@@ -31,7 +32,7 @@ const Input: React.FC<{
           multiline
         />:
         <TextInput
-          style={styles.input}
+          style={required ? styles.inputRequired : styles.input}
           onChangeText={text => onChangeText(text)}
           placeholder={placeholder}
           value={value}

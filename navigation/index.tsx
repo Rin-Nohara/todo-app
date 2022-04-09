@@ -15,6 +15,7 @@
  import AddTask from '../screens/AddTask'
  import ViewAll from '../screens/ViewAll';
  import Login from '../screens/Login';
+ import Register from '../screens/Register'
  
  import { RootStackParamList } from '../types';
  import LinkingConfiguration from './LinkingConfiguration';
@@ -54,11 +55,12 @@
    
    return (
      <Stack.Navigator>
+       <Stack.Screen name="Login" component={Login} options={{ headerShown:false }} />
+       <Stack.Screen name="Register" component={Register} options={{ headerShown:false }} />
        <Stack.Screen name="Main" component={Main} options={{ headerShown:false }} />
        <Stack.Screen name="AddTask" component={AddTask} options={{ headerShown:false }} />
        <Stack.Screen name="ViewAll" component={ViewAll} options={{ headerShown:false }} />
        <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-       <Stack.Screen name="Login" component={Login} options={{ headerShown:false }} />
  
        <Stack.Group screenOptions={{ presentation: 'modal' }}>
          <Stack.Screen name="Modal" component={ModalScreen} />

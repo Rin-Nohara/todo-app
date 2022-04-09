@@ -5,7 +5,7 @@ const {width, height, scale} = Dimensions.get('window');
 export default StyleSheet.create({
   formStyle: {
     display: 'flex',
-    height: 300,
+    height: 350,
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
@@ -24,4 +24,8 @@ export default StyleSheet.create({
     position: 'absolute',
     borderRadius: 14
   },
+  flexCenter: {
+    display: 'flex',
+    justifyContent: 'center',
+  }
 })

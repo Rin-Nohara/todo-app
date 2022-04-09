@@ -9,7 +9,7 @@ import ComponentWrap from '../../components/ComponentWrap';
 import Button from '../../components/Button';
 import BGImage from '../../components/BackGroundImage';
 
-import { login } from '../../api'
+import { register } from '../../api'
 
 import { responseCode } from '../../api/constant'
 
@@ -17,18 +17,16 @@ const Login: React.FC<{}> = () => {
 
   const [telePhone, setTelePhone] = useState('')
   const [password, setPassWord] = useState('')
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
 
   const navigation = useNavigation()
 
   async function handleLogin() {
-    const { status } = await login(telePhone, password)
+    const { status } = await register(telePhone, password, userName, userEmail)
     if(status === responseCode.success) {
-      navigation.navigate('Main')
+      navigation.navigate('Login')
     }
-  }
-
-  function goRegister() {
-    navigation.navigate('Register')
   }
 
   return <>
@@ -37,10 +35,13 @@ const Login: React.FC<{}> = () => {
     >
       <View style={styles.flexEnd}>
         <View style={styles.formStyle}>
-          <Input valueChange={setTelePhone} placeholder='TelePhone' />
+          <Input valueChange={setUserName} placeholder='UserName' required />
+          <Input valueChange={setTelePhone} placeholder='TelePhone' required />
           <Input valueChange={setPassWord} placeholder='Password' />
-          <Button widthFill text='Login' pressHandle={handleLogin} />
-          <Button widthFill bgColor='#fff' textColor='#003366' text='Go Register' pressHandle={goRegister} />
+          <Input valueChange={setUserEmail} placeholder='UserEmail' />
+          <View style={styles.flexCenter}>
+            <Button widthFill text='Register' pressHandle={handleLogin} />
+          </View>
         </View>
       </View>
     </ComponentWrap>
