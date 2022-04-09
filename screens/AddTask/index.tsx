@@ -1,4 +1,4 @@
-import { View, ImageBackground } from 'react-native'
+import { View } from 'react-native'
 import { useState } from 'react'
 
 import ComponentWrap from '../../components/ComponentWrap';
@@ -6,6 +6,7 @@ import GoBack from '../../components/GoBack';
 import ScreenPadding from '../../components/ScreenPadding';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import BGImage from '../../components/BackGroundImage';
 
 import { addTask } from '../../api'
 import { responseCode } from '../../api/constant'
@@ -27,10 +28,7 @@ const AddTask: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <ComponentWrap
       wrapper={
-        <ImageBackground
-          style={styles.img}
-          source={require("../../assets/images/default_bgimg.jpeg")}
-        />
+        <BGImage imageIndex='1' />
       }
     >
       <ScreenPadding>

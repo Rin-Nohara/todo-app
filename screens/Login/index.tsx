@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './style';
 
@@ -11,10 +12,12 @@ import { login } from '../../api'
 
 import { responseCode } from '../../api/constant'
 
-const Login: React.FC<{navigation: any}> = ({navigation}) => {
+const Login: React.FC<{}> = () => {
 
   const [telePhone, setTelePhone] = useState('')
   const [password, setPassWord] = useState('')
+
+  const navigation = useNavigation()
 
   async function handleLogin() {
     const { status } = await login(telePhone, password)

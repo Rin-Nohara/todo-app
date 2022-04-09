@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { View, StyleSheet } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import ComponentWrap from './ComponentWrap'
 
@@ -13,7 +14,6 @@ interface IProps {
 const GoBack: React.FC<IProps> = ({
   color = "#fff",
   pressHandle,
-  navigation
 }) => {
   const styles = useMemo(() => {
     return StyleSheet.create({
@@ -21,11 +21,13 @@ const GoBack: React.FC<IProps> = ({
     });
   }, []);
 
+  const navigation = useNavigation()
+
   function handle() {
-    if(navigation) {
-      navigation.goBack()
+    if(pressHandle) {
+      pressHandle()
     } else {
-      pressHandle && pressHandle();
+      navigation.goBack()
     }
   }
 

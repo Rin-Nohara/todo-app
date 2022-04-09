@@ -1,10 +1,11 @@
 // package
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, ImageBackground } from "react-native";
+import { View } from "react-native";
 
 // global component
 import ComponentWrap from "../../components/ComponentWrap";
 import ScreenPadding from "../../components/ScreenPadding";
+import BGImage from "../../components/BackGroundImage";
 
 // screen component
 import Welcome from "../../components/Welcome";
@@ -20,10 +21,7 @@ function Main(props: { navigation: any }) {
   return (
     <ComponentWrap
       wrapper={
-        <ImageBackground
-          style={styles.imgStyle}
-          source={require("../../assets/images/default_bgimg.jpeg")}
-        />
+        <BGImage imageIndex="1" />
       }
     >
       <SafeAreaView>

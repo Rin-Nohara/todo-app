@@ -1,8 +1,9 @@
 import axios from 'axios'
+import { baseUrl } from './constant'
 import { getStorage } from '../utils/storage'
 
 // TODO 区分线上环境
-axios.defaults.baseURL = 'http://localhost:4400'
+axios.defaults.baseURL = baseUrl
 
 axios.defaults.timeout = 10000
 // 自定义请求头：对所有请求方法生效
@@ -30,9 +31,11 @@ export function request(method: AJAXMethod, url: string, data:any) {
   })
 }
 
-export function get(url: string, data: any) {
-  return request('GET', url, {
-    param: data
+export function get(url: string, data?: any) {
+  return axios.get(url, {
+    params: {
+      data
+    }
   })
 }
 

@@ -1,5 +1,5 @@
-import { get, post } from './request'
-import { LOGIN_URL, ADD_TASK } from './uri'
+import { get, post, request } from './request'
+import { LOGIN_URL, ADD_TASK, LOGIN_STATUS } from './uri'
 import { responseCode } from './constant'
 import { setStorage } from '../utils/storage'
 
@@ -34,7 +34,6 @@ export async function addTask (taskName: string, taskDescription: string) {
     })
   
     if(data.status === responseCode.success) {
-      setStorage('token', data.data.token)
       return {
         status: responseCode.success,
         data: data.data
@@ -47,4 +46,9 @@ export async function addTask (taskName: string, taskDescription: string) {
       error: e.message
     }
   }
+}
+
+export async function checkLoginStatus () {
+  const { data } = await get(LOGIN_STATUS)
+  return data
 }
