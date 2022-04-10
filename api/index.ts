@@ -1,5 +1,5 @@
 import { get, post, request } from './request'
-import { LOGIN_URL, ADD_TASK, LOGIN_STATUS, REGISTER } from './uri'
+import { LOGIN_URL, ADD_TASK, LOGIN_STATUS, REGISTER, TASK_LIST } from './uri'
 import { responseCode } from './constant'
 import { setStorage } from '../utils/storage'
 
@@ -75,4 +75,9 @@ export async function register(telePhone: string, password: string, userName: st
       error: e.message
     }
   }
+}
+
+export async function getTasks() {
+  const { data } = await get(TASK_LIST)
+  return data
 }
