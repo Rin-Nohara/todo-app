@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 
 const {width: dWidth} = Dimensions.get('window');
 
@@ -19,6 +19,7 @@ interface IProps {
  */
 const Button: React.FC<IProps> = ({text, textColor = '#fff', bgColor = '#003366', disable, widthFill, pressHandle, width, height}) => {
 
+    const [active, setActive] = useState<boolean>()
     const styles = useMemo(() => {
         return StyleSheet.create({
             wrap: {
@@ -34,7 +35,10 @@ const Button: React.FC<IProps> = ({text, textColor = '#fff', bgColor = '#003366'
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                alignContent: 'center'
+                alignContent: 'center',
+            },
+            active: {
+                opacity: 0.8
             },
             text: {
                 color: textColor,
@@ -50,13 +54,16 @@ const Button: React.FC<IProps> = ({text, textColor = '#fff', bgColor = '#003366'
             pressHandle && pressHandle()
         }
     }
+    function toggleActive() {
+        setActive(!active)
+    }
 
     return (
-        <View onTouchStart={handle} style={styles.wrap}>
+        <Pressable disabled={disable} onPressIn={toggleActive} onPressOut={toggleActive} style={[styles.wrap, active ? styles.active: {}]} onPress={handle}>
             <Text style={styles.text}>
                 {text}
             </Text>
-        </View>
+        </Pressable>
     )
 }
 

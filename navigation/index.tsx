@@ -47,20 +47,24 @@
      checkLoginStatus().then(res => {
        const { status } = res
        
-       if(responseCode.success === status) return
-       navigation.navigate('Login')
+       if(responseCode.success === status) {
+         navigation.navigate('Main')
+       } else {
+          navigation.navigate('Login')
+       }
      })
    }, [])
    
    
    return (
      <Stack.Navigator>
-       <Stack.Screen name="Login" component={Login} options={{ headerShown:false }} />
-       <Stack.Screen name="Register" component={Register} options={{ headerShown:false }} />
        <Stack.Screen name="Main" component={Main} options={{ headerShown:false }} />
        <Stack.Screen name="AddTask" component={AddTask} options={{ headerShown:false }} />
        <Stack.Screen name="ViewAll" component={ViewAll} options={{ headerShown:false }} />
        <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+
+       <Stack.Screen name="Login" component={Login} options={{ headerShown:false }} />
+       <Stack.Screen name="Register" component={Register} options={{ headerShown:false }} />
  
        <Stack.Group screenOptions={{ presentation: 'modal' }}>
          <Stack.Screen name="Modal" component={ModalScreen} />
